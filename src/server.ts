@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import mustache from 'mustache-express';
 import path from 'path';
+import mainRouter from './routes/index';
+
 
 dotenv.config();
 
@@ -13,4 +15,6 @@ server.engine('mustache', mustache());
 
 server.use(express.static(path.join(__dirname, '../plubic')))
 
-server.listen(process.env.PORT);
+server.use(mainRouter);
+
+server.listen(process.env.PORT)
